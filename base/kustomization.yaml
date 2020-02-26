@@ -1,0 +1,15 @@
+namespace: spin-test
+resources:
+- clouddriver/deployment.yml
+- clouddriver/service.yml
+secretGenerator:
+- files: []
+  name: clouddriver-config
+- files: []
+  name: spinnaker-secrets
+commonLabels:
+  app.kubernetes.io/component: server
+  app.kubernetes.io/managed-by: kleat
+  app.kubernetes.io/part-of: spinnaker
+  app.kubernetes.io/version: 1.18.2
+
