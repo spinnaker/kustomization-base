@@ -1,4 +1,4 @@
-# spinnaker-kustomize
+# kustomization-base
 
 This repo contains a base kustomization that can be used to install Spinnaker to
 a Kubernetes cluster. Please see the
