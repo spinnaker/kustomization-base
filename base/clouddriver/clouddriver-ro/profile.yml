@@ -1,0 +1,12 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: clouddriver
+spec:
+  template:
+    spec:
+      containers:
+        - name: clouddriver
+          env:
+          - name: SPRING_PROFILES_ACTIVE
+            value: ro,local

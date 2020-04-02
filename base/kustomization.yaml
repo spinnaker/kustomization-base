@@ -1,11 +1,5 @@
 resources:
-- clouddriver/deployment.yml
-- clouddriver/service.yml
-secretGenerator:
-- files: []
-  name: clouddriver-config
-- files: []
-  name: spinnaker-secrets
+- ./clouddriver
 commonLabels:
   app.kubernetes.io/component: server
   app.kubernetes.io/managed-by: kleat
