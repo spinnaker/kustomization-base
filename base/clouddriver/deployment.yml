@@ -20,10 +20,10 @@ spec:
       containers:
       - env:
         - name: JAVA_OPTS
-          value: -XX:MaxRAMPercentage=50.0
+          value: -XX:MaxRAMPercentage=80.0
         - name: SPRING_PROFILES_ACTIVE
           value: local
-        image: gcr.io/spinnaker-marketplace/clouddriver:6.6.0-20200220090631
+        image: gcr.io/spinnaker-marketplace/clouddriver
         name: clouddriver
         ports:
         - name: traffic-port
@@ -50,10 +50,8 @@ spec:
       volumes:
       - name: clouddriver-config-volume
         secret:
-          defaultMode: 420
           secretName: clouddriver-config
       - name: spinnaker-secrets-volume
         secret:
-          defaultMode: 420
           secretName: spinnaker-secrets
 
