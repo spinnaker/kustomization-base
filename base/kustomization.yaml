@@ -5,4 +5,8 @@ commonLabels:
   app.kubernetes.io/managed-by: kleat
   app.kubernetes.io/part-of: spinnaker
   app.kubernetes.io/version: 1.18.2
-
+secretGenerator:
+- name: clouddriver-config
+  files:
+  - config/spinnaker.yml
+  behavior: merge

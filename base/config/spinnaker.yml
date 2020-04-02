@@ -1,0 +1,22 @@
+services:
+  clouddriverCaching:
+    baseUrl: http://clouddriver-caching.spinnaker:7002
+    enabled: true
+  clouddriverRo:
+    baseUrl: http://clouddriver-ro.spinnaker:7002
+    enabled: true
+  clouddriverRoDeck:
+    baseUrl: http://clouddriver-ro-deck.spinnaker:7002
+    enabled: true
+  clouddriverRw:
+    baseUrl: http://clouddriver-rw.spinnaker:7002
+    enabled: true
+  redis:
+    baseUrl: redis://redis.spinnaker:6379
+    enabled: true
+  redisRo:
+    # For now just pointing at the primary redis
+    # Consider pointing to a spin-redis-ro service
+    baseUrl: redis://redis.spinnaker:6379
+    enabled: true
+
