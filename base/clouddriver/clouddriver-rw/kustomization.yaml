@@ -1,0 +1,10 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ./../base
+nameSuffix: -rw
+commonLabels:
+  app.kubernetes.io/instance: clouddriver-rw
+  app.kubernetes.io/name: clouddriver-rw
+patchesStrategicMerge:
+- profile.yml
