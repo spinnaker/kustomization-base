@@ -54,7 +54,7 @@ same namespace as your Spinnaker installation that routes to a valid `redis`
 backend.
 
 Regardless of the approach you choose, add all the relevant redis Kubernetes
-objects to your customization via `kustomze edit add resource redis/*.yml`.
+objects to your customization via `kustomize edit add resource redis/*.yml`.
 
 #### Add any secret files
 
