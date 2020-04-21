@@ -139,7 +139,7 @@ If you would like to add a `-local.yml` config file for any service, add it to
 the `local/` directory, and update that service's config in the
 `kustomization.yaml` to also mount that `local.yml` file.
 
-For example, to configure to clouddriver, add these settings to
+For example, to configure for clouddriver, add these settings to
 `local/clouddriver-local.yml`, and update the `clouddriver-config` entry in the
 `kustomization.yaml` to:
 
