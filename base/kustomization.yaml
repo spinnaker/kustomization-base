@@ -12,3 +12,4 @@ secretGenerator:
   files:
   - config/spinnaker.yml
   name: clouddriver-config
+namespace: spinnaker

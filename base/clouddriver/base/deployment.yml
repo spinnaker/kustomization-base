@@ -23,7 +23,7 @@ spec:
           value: -XX:MaxRAMPercentage=80.0
         - name: SPRING_PROFILES_ACTIVE
           value: local
-        image: gcr.io/spinnaker-marketplace/clouddriver
+        image: gcr.io/spinnaker-marketplace/clouddriver:spinnaker-master-latest-unvalidated
         name: clouddriver
         ports:
         - name: traffic-port
