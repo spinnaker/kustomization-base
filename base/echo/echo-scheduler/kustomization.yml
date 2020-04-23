@@ -1,0 +1,10 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ./../base
+nameSuffix: -scheduler
+commonLabels:
+  app.kubernetes.io/instance: echo-scheduler
+  app.kubernetes.io/name: echo-scheduler
+patchesStrategicMerge:
+- profile.yml
