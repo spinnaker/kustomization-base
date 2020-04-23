@@ -6,3 +6,5 @@ nameSuffix: -worker
 commonLabels:
   app.kubernetes.io/instance: echo-worker
   app.kubernetes.io/name: echo-worker
+patchesStrategicMerge:
+- profile.yml

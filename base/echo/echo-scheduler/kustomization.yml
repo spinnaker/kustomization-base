@@ -6,3 +6,5 @@ nameSuffix: -scheduler
 commonLabels:
   app.kubernetes.io/instance: echo-scheduler
   app.kubernetes.io/name: echo-scheduler
+patchesStrategicMerge:
+- profile.yml
