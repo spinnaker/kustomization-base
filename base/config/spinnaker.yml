@@ -11,6 +11,12 @@ services:
   clouddriverRw:
     baseUrl: http://clouddriver-rw.spinnaker:7002
     enabled: true
+  echoScheduler:
+    baseUrl: http://echo-scheduler.spinnaker:8089
+    enabled: true
+  echoWorker:
+    baseUrl: http://echo-worker.spinnaker:8089
+    enabled: true
   redis:
     baseUrl: redis://redis.spinnaker:6379
     enabled: true

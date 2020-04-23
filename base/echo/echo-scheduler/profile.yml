@@ -1,0 +1,12 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: echo
+spec:
+  template:
+    spec:
+      containers:
+      - name: echo
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: scheduler,local
