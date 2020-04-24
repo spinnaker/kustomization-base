@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
 - ./clouddriver
 - ./echo
+- ./front50
 commonLabels:
   app.kubernetes.io/component: server
   app.kubernetes.io/managed-by: kleat
