@@ -8,6 +8,3 @@ resources:
 secretGenerator:
 - files: []
   name: clouddriver-config
-- files: []
-  name: spinnaker-secrets
-

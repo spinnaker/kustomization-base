@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
 - ./clouddriver
 - ./echo
+- ./front50
 commonLabels:
   app.kubernetes.io/component: server
   app.kubernetes.io/managed-by: kleat
@@ -13,4 +14,14 @@ secretGenerator:
   files:
   - config/spinnaker.yml
   name: clouddriver-config
+- behavior: merge
+  files:
+  - config/spinnaker.yml
+  name: echo-config
+- behavior: merge
+  files:
+  - config/spinnaker.yml
+  name: front50-config
+- files: []
+  name: spinnaker-secrets
 namespace: spinnaker

@@ -17,6 +17,9 @@ services:
   echoWorker:
     baseUrl: http://echo-worker.spinnaker:8089
     enabled: true
+  front50:
+    baseUrl: http://front50.spinnaker:8080
+    enabled: true
   redis:
     baseUrl: redis://redis.spinnaker:6379
     enabled: true
