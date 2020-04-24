@@ -5,5 +5,3 @@ resources:
 secretGenerator:
 - files: []
   name: front50-config
-- files: []
-  name: front50-secrets

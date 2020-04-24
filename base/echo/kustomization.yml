@@ -6,5 +6,3 @@ resources:
 secretGenerator:
 - files: []
   name: echo-config
-- files: []
-  name: echo-secrets
