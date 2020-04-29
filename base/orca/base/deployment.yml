@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: orca
+  labels:
+    app.kubernetes.io/name: orca
+    app.kubernetes.io/instance: orca
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: orca
+      app.kubernetes.io/instance: orca
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: orca
+        app.kubernetes.io/instance: orca
+    spec:
+      containers:
+      - env:
+        - name: JAVA_OPTS
+          value: -XX:MaxRAMPercentage=80.0
+        - name: SPRING_PROFILES_ACTIVE
+          value: local
+        image: gcr.io/spinnaker-marketplace/orca:spinnaker-master-latest-unvalidated
+        name: orca
+        ports:
+        - name: traffic-port
+          containerPort: 8083
+          protocol: TCP
+        readinessProbe:
+          httpGet:
+            port: traffic-port
+            path: /health
+          failureThreshold: 3
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        volumeMounts:
+        - mountPath: /opt/spinnaker/config
+          name: orca-config-volume
+        - mountPath: /var/secrets
+          name: spinnaker-secrets-volume
+      terminationGracePeriodSeconds: 720
+      volumes:
+      - name: orca-config-volume
+        secret:
+          secretName: orca-config
+      - name: spinnaker-secrets-volume
+        secret:
+          secretName: spinnaker-secrets
+
