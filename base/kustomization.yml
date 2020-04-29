@@ -4,6 +4,7 @@ resources:
 - ./clouddriver
 - ./echo
 - ./front50
+- ./orca
 commonLabels:
   app.kubernetes.io/component: server
   app.kubernetes.io/managed-by: kleat
@@ -22,6 +23,10 @@ secretGenerator:
   files:
   - config/spinnaker.yml
   name: front50-config
+- behavior: merge
+  files:
+  - config/spinnaker.yml
+  name: orca-config
 - files: []
   name: spinnaker-secrets
 namespace: spinnaker

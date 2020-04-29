@@ -20,6 +20,9 @@ services:
   front50:
     baseUrl: http://front50.spinnaker:8080
     enabled: true
+  orca:
+    baseUrl: http://orca.spinnaker:8083
+    enabled: true
   redis:
     baseUrl: redis://redis.spinnaker:6379
     enabled: true
@@ -28,4 +31,3 @@ services:
     # Consider pointing to a spin-redis-ro service
     baseUrl: redis://redis.spinnaker:6379
     enabled: true
-
