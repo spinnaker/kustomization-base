@@ -36,11 +36,23 @@ At this point, you can generate the YAML needed to deploy Spinnaker by running
 fail on startup (particularly those that depend on some configured persistence
 store), so let's add some configuration.
 
+#### Create a `spinnaker` namespace
+
+Create a new namespace called `spinnaker` into which each microservice will be
+deployed:
+
+```
+kubectl create namespace spinnaker
+```
+
+If you would like to use a different namespace, you will need to update the
+namespace in `base/kustomization.yml` and each microservice's `baseUrl` in
+`base/config/spinnaker.yml`.
+
 #### Configure Redis
 
 A number of Spinnaker services require a Redis connection; this install pathway
-requires there to be a service `redis` in the same namespace as the Spinnaker
-installation.
+requires there to be a service `redis` in the `spinnaker` namespace.
 
 In the most common case, you will have an external redis; the template repo has
 a `Service` configured with an `ExternalName`; you can update this to point to
@@ -50,7 +62,7 @@ For more complex cases, please refer to the following
 [blog post](https://cloud.google.com/blog/products/gcp/kubernetes-best-practices-mapping-external-services)
 on best practices for mapping external services. In general, the only
 requirement of your solution is that you have a service named `redis` in the
-same namespace as your Spinnaker installation that routes to a valid `redis`
+`spinnaker` namespace that routes to a valid `redis`
 backend.
 
 Regardless of the approach you choose, add all the relevant redis Kubernetes
