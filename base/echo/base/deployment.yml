@@ -54,4 +54,3 @@ spec:
       - name: spinnaker-secrets-volume
         secret:
           secretName: spinnaker-secrets
-
