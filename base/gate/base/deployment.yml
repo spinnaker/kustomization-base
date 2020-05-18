@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: clouddriver
+  name: gate
 spec:
   replicas: 1
   template:
@@ -12,14 +12,17 @@ spec:
           value: -XX:MaxRAMPercentage=80.0
         - name: SPRING_PROFILES_ACTIVE
           value: local
-        image: gcr.io/spinnaker-marketplace/clouddriver:spinnaker-master-latest-unvalidated
-        name: clouddriver
+        image: gcr.io/spinnaker-marketplace/gate:spinnaker-master-latest-unvalidated
+        name: gate
         ports:
         - name: traffic-port
-          containerPort: 7002
+          containerPort: 8084
           protocol: TCP
         readinessProbe:
           httpGet:
+            # TODO(ezimanyi): we need some way of making this scheme configurable
+            # so the health check passes without SSL enabled.
+            scheme: HTTPS
             port: traffic-port
             path: /health
           failureThreshold: 3
@@ -28,18 +31,18 @@ spec:
           timeoutSeconds: 1
         resources:
           requests:
-            cpu: 800m
-            memory: 1200Mi
+            memory: 1Gi
+            cpu: 500m
         volumeMounts:
         - mountPath: /opt/spinnaker/config
-          name: clouddriver-config-volume
+          name: gate-config-volume
         - mountPath: /var/secrets
           name: spinnaker-secrets-volume
       terminationGracePeriodSeconds: 720
       volumes:
-      - name: clouddriver-config-volume
+      - name: gate-config-volume
         secret:
-          secretName: clouddriver-config
+          secretName: gate-config
       - name: spinnaker-secrets-volume
         secret:
           secretName: spinnaker-secrets

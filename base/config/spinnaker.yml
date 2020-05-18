@@ -1,4 +1,10 @@
 services:
+  # Even though clouddriver is deployed in HA mode, other services may not know
+  # this and simply look for service.clouddriver. To account for this use case,
+  # we'll point the generic 'clouddriver' at clouddriver-rw.
+  clouddriver:
+    baseUrl: http://clouddriver-rw.spinnaker:7002
+    enabled: true
   clouddriverCaching:
     baseUrl: http://clouddriver-caching.spinnaker:7002
     enabled: true
@@ -17,8 +23,20 @@ services:
   echoWorker:
     baseUrl: http://echo-worker.spinnaker:8089
     enabled: true
+  fiat:
+    baseUrl: http://fiat.spinnaker:7003
+    enabled: true
   front50:
     baseUrl: http://front50.spinnaker:8080
+    enabled: true
+  # TODO(ezimanyi): The gate URL might be http:// or https://. Figure out how
+  # to handle both cases. (Or, alternately, determine if we need this URL here
+  # at all given that other services should not be sending requests to gate.)
+  gate:
+    baseUrl: https://gate.spinnaker:8084
+    enabled: true
+  igor:
+    baseUrl: http://igor.spinnaker:8088
     enabled: true
   orca:
     baseUrl: http://orca.spinnaker:8083

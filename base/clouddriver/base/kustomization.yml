@@ -3,3 +3,6 @@ kind: Kustomization
 resources:
 - deployment.yml
 - service.yml
+commonLabels:
+  app.kubernetes.io/instance: clouddriver
+  app.kubernetes.io/name: clouddriver

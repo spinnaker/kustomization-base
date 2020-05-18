@@ -4,5 +4,5 @@ resources:
 - deployment.yml
 - service.yml
 commonLabels:
-  app.kubernetes.io/name: front50
-  app.kubernetes.io/instance: front50
+  app.kubernetes.io/name: gate
+  app.kubernetes.io/instance: gate

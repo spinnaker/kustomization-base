@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: clouddriver
+  name: fiat
 spec:
   replicas: 1
   template:
@@ -12,11 +12,11 @@ spec:
           value: -XX:MaxRAMPercentage=80.0
         - name: SPRING_PROFILES_ACTIVE
           value: local
-        image: gcr.io/spinnaker-marketplace/clouddriver:spinnaker-master-latest-unvalidated
-        name: clouddriver
+        image: gcr.io/spinnaker-marketplace/fiat:spinnaker-master-latest-unvalidated
+        name: fiat
         ports:
         - name: traffic-port
-          containerPort: 7002
+          containerPort: 7003
           protocol: TCP
         readinessProbe:
           httpGet:
@@ -28,18 +28,18 @@ spec:
           timeoutSeconds: 1
         resources:
           requests:
-            cpu: 800m
-            memory: 1200Mi
+            memory: 1Gi
+            cpu: 500m
         volumeMounts:
         - mountPath: /opt/spinnaker/config
-          name: clouddriver-config-volume
+          name: fiat-config-volume
         - mountPath: /var/secrets
           name: spinnaker-secrets-volume
       terminationGracePeriodSeconds: 720
       volumes:
-      - name: clouddriver-config-volume
+      - name: fiat-config-volume
         secret:
-          secretName: clouddriver-config
+          secretName: fiat-config
       - name: spinnaker-secrets-volume
         secret:
           secretName: spinnaker-secrets

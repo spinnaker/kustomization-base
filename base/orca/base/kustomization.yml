@@ -3,3 +3,6 @@ kind: Kustomization
 resources:
 - deployment.yml
 - service.yml
+commonLabels:
+  app.kubernetes.io/name: orca
+  app.kubernetes.io/instance: orca
