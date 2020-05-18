@@ -2,20 +2,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: clouddriver
-  labels:
-    app.kubernetes.io/name: clouddriver
-    app.kubernetes.io/instance: clouddriver
 spec:
   replicas: 1
-  selector:
-    matchLabels:
-      app.kubernetes.io/name: clouddriver
-      app.kubernetes.io/instance: clouddriver
   template:
-    metadata:
-      labels:
-        app.kubernetes.io/name: clouddriver
-        app.kubernetes.io/instance: clouddriver
     spec:
       containers:
       - env:
