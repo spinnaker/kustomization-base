@@ -3,7 +3,10 @@ kind: Kustomization
 resources:
 - ./clouddriver
 - ./echo
+- ./fiat
 - ./front50
+- ./igor
+- ./gate
 - ./orca
 commonLabels:
   app.kubernetes.io/component: server
@@ -22,7 +25,19 @@ secretGenerator:
 - behavior: merge
   files:
   - config/spinnaker.yml
+  name: fiat-config
+- behavior: merge
+  files:
+  - config/spinnaker.yml
   name: front50-config
+- behavior: merge
+  files:
+  - config/spinnaker.yml
+  name: gate-config
+- behavior: merge
+  files:
+  - config/spinnaker.yml
+  name: igor-config
 - behavior: merge
   files:
   - config/spinnaker.yml
