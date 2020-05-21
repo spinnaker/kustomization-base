@@ -8,40 +8,32 @@ resources:
 - ./igor
 - ./gate
 - ./orca
-commonLabels:
-  app.kubernetes.io/component: server
-  app.kubernetes.io/managed-by: kleat
-  app.kubernetes.io/part-of: spinnaker
-  app.kubernetes.io/version: 1.18.2
 secretGenerator:
 - behavior: merge
   files:
-  - config/spinnaker.yml
+  - ../service_discovery/spinnaker.yml
   name: clouddriver-config
 - behavior: merge
   files:
-  - config/spinnaker.yml
+  - ../service_discovery/spinnaker.yml
   name: echo-config
 - behavior: merge
   files:
-  - config/spinnaker.yml
+  - ../service_discovery/spinnaker.yml
   name: fiat-config
 - behavior: merge
   files:
-  - config/spinnaker.yml
+  - ../service_discovery/spinnaker.yml
   name: front50-config
 - behavior: merge
   files:
-  - config/spinnaker.yml
+  - ../service_discovery/spinnaker.yml
   name: gate-config
 - behavior: merge
   files:
-  - config/spinnaker.yml
+  - ../service_discovery/spinnaker.yml
   name: igor-config
 - behavior: merge
   files:
-  - config/spinnaker.yml
+  - ../service_discovery/spinnaker.yml
   name: orca-config
-- files: []
-  name: spinnaker-secrets
-namespace: spinnaker
