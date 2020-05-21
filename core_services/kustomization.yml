@@ -3,7 +3,6 @@ kind: Kustomization
 resources:
 - ./clouddriver
 - ./echo
-- ./fiat
 - ./front50
 - ./igor
 - ./gate
@@ -17,10 +16,6 @@ secretGenerator:
   files:
   - ../service_discovery/spinnaker.yml
   name: echo-config
-- behavior: merge
-  files:
-  - ../service_discovery/spinnaker.yml
-  name: fiat-config
 - behavior: merge
   files:
   - ../service_discovery/spinnaker.yml

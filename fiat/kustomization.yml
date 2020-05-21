@@ -3,5 +3,7 @@ kind: Kustomization
 resources:
 - ./base
 secretGenerator:
-- files: []
+- behavior: merge
+  files:
+  - ../service_discovery/spinnaker.yml
   name: fiat-config
