@@ -38,6 +38,9 @@ services:
   igor:
     baseUrl: http://igor.spinnaker:8088
     enabled: true
+  kayenta:
+    baseUrl: http://kayenta.spinnaker:8090
+    enabled: false
   orca:
     baseUrl: http://orca.spinnaker:8083
     enabled: true
