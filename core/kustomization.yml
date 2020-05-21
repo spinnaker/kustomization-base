@@ -10,25 +10,25 @@ resources:
 secretGenerator:
 - behavior: merge
   files:
-  - ../service_discovery/spinnaker.yml
+  - ../service-discovery/spinnaker.yml
   name: clouddriver-config
 - behavior: merge
   files:
-  - ../service_discovery/spinnaker.yml
+  - ../service-discovery/spinnaker.yml
   name: echo-config
 - behavior: merge
   files:
-  - ../service_discovery/spinnaker.yml
+  - ../service-discovery/spinnaker.yml
   name: front50-config
 - behavior: merge
   files:
-  - ../service_discovery/spinnaker.yml
+  - ../service-discovery/spinnaker.yml
   name: gate-config
 - behavior: merge
   files:
-  - ../service_discovery/spinnaker.yml
+  - ../service-discovery/spinnaker.yml
   name: igor-config
 - behavior: merge
   files:
-  - ../service_discovery/spinnaker.yml
+  - ../service-discovery/spinnaker.yml
   name: orca-config

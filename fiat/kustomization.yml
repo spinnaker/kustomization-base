@@ -5,5 +5,5 @@ resources:
 secretGenerator:
 - behavior: merge
   files:
-  - ../service_discovery/spinnaker.yml
+  - ../service-discovery/spinnaker.yml
   name: fiat-config
