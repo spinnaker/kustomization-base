@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kayenta
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+      - env:
+        - name: JAVA_OPTS
+          value: -XX:MaxRAMPercentage=80.0
+        - name: SPRING_PROFILES_ACTIVE
+          value: local
+        image: gcr.io/spinnaker-marketplace/kayenta:spinnaker-master-latest-unvalidated
+        name: kayenta
+        ports:
+        - name: traffic-port
+          containerPort: 8090
+          protocol: TCP
+        readinessProbe:
+          httpGet:
+            port: traffic-port
+            path: /health
+          failureThreshold: 3
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        resources:
+          requests:
+            memory: 1Gi
+            cpu: 500m
+        volumeMounts:
+        - mountPath: /opt/spinnaker/config
+          name: kayenta-config-volume
+        - mountPath: /var/secrets
+          name: spinnaker-secrets-volume
+      terminationGracePeriodSeconds: 720
+      volumes:
+      - name: kayenta-config-volume
+        secret:
+          secretName: kayenta-config
+      - name: spinnaker-secrets-volume
+        secret:
+          secretName: spinnaker-secrets

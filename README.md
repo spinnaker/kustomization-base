@@ -46,8 +46,8 @@ kubectl create namespace spinnaker
 ```
 
 If you would like to use a different namespace, you will need to update the
-namespace in `base/kustomization.yml` and each microservice's `baseUrl` in
-`base/config/spinnaker.yml`.
+namespace in your root `kustomization.yml` and each microservice's `baseUrl` in
+a fork of this repository's `service-discovery/spinnaker.yml`.
 
 #### Configure Redis
 
@@ -139,6 +139,30 @@ For example, it has an entry for the clouddriver config as:
   files:
     - kleat/clouddriver.yml
   name: clouddriver-config
+```
+#### Enable optional services
+
+The two optional Spinnaker services this workflow currently supports are Fiat
+and Kayenta.
+
+To enable Kayenta, ensure that `canary.enabled` is set to `true` in your hal
+config, and then ensure the Kayenta kustomization is included in the `resources`
+block of your `kustomization.yml`:
+
+```
+resources:
+- github.com/spinnaker/kustomization-base/core
+- github.com/spinnaker/kustomization-base/kayenta
+```
+
+To enable Fiat, ensure that `security.authz` is set to `true` in your hal
+config, and then ensure the Fiat kustomization is included in the `resources`
+block of your `kustomization.yml`:
+
+```
+resources:
+- github.com/spinnaker/kustomization-base/core
+- github.com/spinnaker/kustomization-base/fiat
 ```
 
 #### (Optional) Add any -local configs

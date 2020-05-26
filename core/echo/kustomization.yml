@@ -3,6 +3,3 @@ kind: Kustomization
 resources:
 - ./echo-scheduler
 - ./echo-worker
-secretGenerator:
-- files: []
-  name: echo-config
