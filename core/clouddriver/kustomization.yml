@@ -5,6 +5,3 @@ resources:
 - ./clouddriver-rw
 - ./clouddriver-ro
 - ./clouddriver-ro-deck
-secretGenerator:
-- files: []
-  name: clouddriver-config

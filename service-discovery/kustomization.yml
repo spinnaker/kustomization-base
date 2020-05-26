@@ -1,0 +1,27 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+secretGenerator:
+- files:
+  - spinnaker.yml
+  name: clouddriver-config
+- files:
+  - spinnaker.yml
+  name: echo-config
+- files:
+  - spinnaker.yml
+  name: fiat-config
+- files:
+  - spinnaker.yml
+  name: front50-config
+- files:
+  - spinnaker.yml
+  name: gate-config
+- files:
+  - spinnaker.yml
+  name: igor-config
+- files:
+  - spinnaker.yml
+  name: kayenta-config
+- files:
+  - spinnaker.yml
+  name: orca-config
