@@ -25,3 +25,8 @@ secretGenerator:
 - files:
   - spinnaker.yml
   name: orca-config
+- files:
+  - spinnaker.yml
+  name: rosco-config
+- files: []
+  name: spinnaker-secrets

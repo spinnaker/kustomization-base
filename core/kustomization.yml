@@ -7,4 +7,5 @@ resources:
 - ./igor
 - ./gate
 - ./orca
+- ./rosco
 - ../service-discovery
