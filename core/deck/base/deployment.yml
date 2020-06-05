@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deck
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+      - env:
+        - name: DECK_HOST
+          value: 0.0.0.0
+        - name: DECK_PORT
+          value: "9000"
+        envFrom:
+          - configMapRef:
+              name: deck-env
+        image: gcr.io/spinnaker-marketplace/deck:spinnaker-master-latest-unvalidated
+        name: deck
+        ports:
+        - name: traffic-port
+          containerPort: 9000
+          protocol: TCP
+        readinessProbe:
+          tcpSocket:
+            port: 9000
+          failureThreshold: 3
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        volumeMounts:
+        - mountPath: /opt/spinnaker/config
+          name: deck-config-volume
+        - mountPath: /var/secrets
+          name: spinnaker-secrets-volume
+      volumes:
+      - name: deck-config-volume
+        secret:
+          secretName: deck-config
+      - name: spinnaker-secrets-volume
+        secret:
+          secretName: spinnaker-secrets

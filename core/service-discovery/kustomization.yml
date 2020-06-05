@@ -4,6 +4,8 @@ secretGenerator:
 - files:
   - spinnaker.yml
   name: clouddriver-config
+- files: []
+  name: deck-config
 - files:
   - spinnaker.yml
   name: echo-config
@@ -30,3 +32,5 @@ secretGenerator:
   name: rosco-config
 - files: []
   name: spinnaker-secrets
+configMapGenerator:
+- name: deck-env
