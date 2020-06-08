@@ -17,6 +17,12 @@ services:
   clouddriverRw:
     baseUrl: http://clouddriver-rw.spinnaker:7002
     enabled: true
+  # Even though echo is deployed in HA mode, other services may not know
+  # this and simply look for service.echo. To account for this use case,
+  # we'll point the generic 'echo' at echo-worker.
+  echo:
+    baseUrl: http://echo-worker.spinnaker:8089
+    enabled: true
   echoScheduler:
     baseUrl: http://echo-scheduler.spinnaker:8089
     enabled: true
