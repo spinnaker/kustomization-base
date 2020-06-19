@@ -1,0 +1,50 @@
+# Add the following patches block to your base kustomization.yml in your fork
+# of spinnaker-config:
+
+patches:
+- target:
+    # Match all Deployments, excluding deck
+    kind: Deployment
+    name: (clouddriver|echo|fiat|front50|gate|igor|kayenta|orca|rosco)
+  path: monitoring/patches/shared/sidecar.yml
+- target:
+    # Match all Deployments, excluding deck
+    kind: Deployment
+    name: (clouddriver|echo|fiat|front50|gate|igor|kayenta|orca|rosco)
+  path: monitoring/patches/shared/volumes.yml
+- target:
+    kind: Deployment
+    name: clouddriver
+  path: monitoring/patches/clouddriver.yml
+- target:
+    kind: Deployment
+    name: echo
+  path: monitoring/patches/echo.yml
+- target:
+    kind: Deployment
+    name: fiat
+  path: monitoring/patches/fiat.yml
+- target:
+    kind: Deployment
+    name: front50
+  path: monitoring/patches/front50.yml
+- target:
+    kind: Deployment
+    name: gate
+  path: monitoring/patches/gate.yml
+- target:
+    kind: Deployment
+    name: igor
+  path: monitoring/patches/igor.yml
+- target:
+    kind: Deployment
+    name: kayenta
+  path: monitoring/patches/kayenta.yml
+- target:
+    kind: Deployment
+    name: orca
+  path: monitoring/patches/orca.yml
+- target:
+    kind: Deployment
+    name: rosco
+  path: monitoring/patches/rosco.yml

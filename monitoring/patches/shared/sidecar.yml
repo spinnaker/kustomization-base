@@ -1,0 +1,30 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: ignored
+spec:
+  template:
+    spec:
+      containers:
+      - env:
+        - name: JAVA_OPTS
+          value: -XX:MaxRAMPercentage=80.0
+        image: gcr.io/spinnaker-marketplace/monitoring-daemon:spinnaker-master-latest-unvalidated
+        name: monitoring-daemon
+        ports:
+        - containerPort: 8008
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 3
+          periodSeconds: 10
+          successThreshold: 1
+          tcpSocket:
+            port: 8008
+          timeoutSeconds: 1
+        volumeMounts:
+        - mountPath: /opt/spinnaker-monitoring/filters
+          name: spinnaker-monitoring-filters-volume
+        - mountPath: /opt/spinnaker-monitoring/config
+          name: spinnaker-monitoring-config-volume
+        - mountPath: /opt/spinnaker-monitoring/registry
+          name: spinnaker-monitoring-registry-volume

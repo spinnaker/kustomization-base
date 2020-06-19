@@ -187,6 +187,27 @@ For example, to configure for clouddriver, add these settings to
   name: clouddriver-config
 ```
 
+#### (Optional) Enable monitoring
+
+The Spinnaker monitoring daemon runs as a sidecar in each Deployment (excluding
+Deck). To enable monitoring, copy the [monitoring](/monitoring) directory
+from this repository into the `base` directory of your fork of spinnaker-config.
+
+Add the `monitoring` directory to your base kustomization.yml's `resource`
+block. This will pull in the kustomization.yml that includes configuration that
+each microservice's monitoring sidecar will use to discover the endpoint to poll
+for metrics.
+
+Next, copy the [example `patches` block](/monitoring/patches.yml) into your
+base kustomization.yml. These patches will add the monitoring sidecar and
+appropriate volumes to each Deployment.
+
+To include custom
+[metric filters](https://www.spinnaker.io/setup/monitoring/#configuring-metric-filters),
+add them to the included `metric-filters` directory in your fork of
+spinaker-config, and reference them in the spinnaker-monitoring-filters
+`secretGenerator` entry in the root kustomization.yml.
+
 #### Deploy Spinnaker
 
 Now that all of the config files are in place, you can generate the YAML files

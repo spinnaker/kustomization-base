@@ -1,0 +1,30 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+secretGenerator:
+- name: spinnaker-monitoring-registry-clouddriver
+  files:
+  - ./registry/clouddriver.yml
+- name: spinnaker-monitoring-registry-echo
+  files:
+  - ./registry/echo.yml
+- name: spinnaker-monitoring-registry-fiat
+  files:
+  - ./registry/fiat.yml
+- name: spinnaker-monitoring-registry-front50
+  files:
+  - ./registry/front50.yml
+- name: spinnaker-monitoring-registry-gate
+  files:
+  - ./registry/gate.yml
+- name: spinnaker-monitoring-registry-igor
+  files:
+  - ./registry/igor.yml
+- name: spinnaker-monitoring-registry-kayenta
+  files:
+  - ./registry/kayenta.yml
+- name: spinnaker-monitoring-registry-orca
+  files:
+  - ./registry/orca.yml
+- name: spinnaker-monitoring-registry-rosco
+  files:
+  - ./registry/rosco.yml
