@@ -52,3 +52,6 @@ services:
     # Consider pointing to a spin-redis-ro service
     baseUrl: redis://redis.spinnaker:6379
     enabled: true
+  rosco:
+    baseUrl: http://rosco.spinnaker:8087
+    enabled: true
