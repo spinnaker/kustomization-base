@@ -1,0 +1,11 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: fiat
+spec:
+  template:
+    spec:
+      volumes:
+      - name: spinnaker-monitoring-registry-volume
+        secret:
+          secretName: spinnaker-monitoring-registry-fiat

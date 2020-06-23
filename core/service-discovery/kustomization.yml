@@ -32,5 +32,9 @@ secretGenerator:
   name: rosco-config
 - files: []
   name: spinnaker-secrets
+- files: []
+  name: spinnaker-monitoring-config
+- files: []
+  name: spinnaker-monitoring-filters
 configMapGenerator:
 - name: deck-env

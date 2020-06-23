@@ -1,0 +1,14 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: ignored
+spec:
+  template:
+    spec:
+      volumes:
+      - name: spinnaker-monitoring-config-volume
+        secret:
+          secretName: spinnaker-monitoring-config
+      - name: spinnaker-monitoring-filters-volume
+        secret:
+          secretName: spinnaker-monitoring-filters
