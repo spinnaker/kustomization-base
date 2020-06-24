@@ -28,3 +28,5 @@ spec:
           name: spinnaker-monitoring-config-volume
         - mountPath: /opt/spinnaker-monitoring/registry
           name: spinnaker-monitoring-registry-volume
+        - mountPath: /var/secrets
+          name: spinnaker-secrets-volume
