@@ -165,6 +165,27 @@ resources:
 - github.com/spinnaker/kustomization-base/fiat
 ```
 
+#### Set the Spinnaker version
+
+By default, this base kustomization deploys the `master-latest-validated`
+version of each microservice, which is most recent version that has passed our
+integration tests. To deploy a different version, you'll need to override the
+version of each microservice in the `images` block in the `kustomization.yml`
+file.
+
+To deploy a specific version of Spinnaker, override each image's tag with
+`spinnaker-{version-number}`. For example, to deploy Spinnaker 1.20.5, override
+the tag for each microservice to be `spinnaker-1.20.5`:
+
+```yaml
+images:
+  - name: gcr.io/spinnaker-marketplace/clouddriver
+    newTag: spinnaker-1.20.5
+  - name: gcr.io/spinnaker-marketplace/deck
+    newTag: spinnaker-1.20.5
+# ...
+```
+
 #### (Optional) Add any -local configs
 
 In addition to the main `service.yml` config file, each microservice also reads
