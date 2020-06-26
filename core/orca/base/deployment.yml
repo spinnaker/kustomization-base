@@ -12,7 +12,7 @@ spec:
           value: -XX:MaxRAMPercentage=80.0
         - name: SPRING_PROFILES_ACTIVE
           value: local
-        image: gcr.io/spinnaker-marketplace/orca:spinnaker-master-latest-unvalidated
+        image: gcr.io/spinnaker-marketplace/orca:spinnaker-master-latest-validated
         name: orca
         ports:
         - name: traffic-port

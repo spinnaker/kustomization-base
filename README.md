@@ -62,8 +62,7 @@ For more complex cases, please refer to the following
 [blog post](https://cloud.google.com/blog/products/gcp/kubernetes-best-practices-mapping-external-services)
 on best practices for mapping external services. In general, the only
 requirement of your solution is that you have a service named `redis` in the
-`spinnaker` namespace that routes to a valid `redis`
-backend.
+`spinnaker` namespace that routes to a valid `redis` backend.
 
 Regardless of the approach you choose, add all the relevant redis Kubernetes
 objects to your customization via `kustomize edit add resource redis/*.yml`.
@@ -140,6 +139,7 @@ For example, it has an entry for the clouddriver config as:
     - kleat/clouddriver.yml
   name: clouddriver-config
 ```
+
 #### Enable optional services
 
 The two optional Spinnaker services this workflow currently supports are Fiat
@@ -163,6 +163,27 @@ block of your `kustomization.yml`:
 resources:
 - github.com/spinnaker/kustomization-base/core
 - github.com/spinnaker/kustomization-base/fiat
+```
+
+#### Set the Spinnaker version
+
+By default, this base kustomization deploys the `master-latest-validated`
+version of each microservice, which is most recent version that has passed our
+integration tests. To deploy a different version, you'll need to override the
+version of each microservice in the `images` block in the `kustomization.yml`
+file.
+
+To deploy a specific version of Spinnaker, override each image's tag with
+`spinnaker-{version-number}`. For example, to deploy Spinnaker 1.20.5, override
+the tag for each microservice to be `spinnaker-1.20.5`:
+
+```yaml
+images:
+  - name: gcr.io/spinnaker-marketplace/clouddriver
+    newTag: spinnaker-1.20.5
+  - name: gcr.io/spinnaker-marketplace/deck
+    newTag: spinnaker-1.20.5
+# ...
 ```
 
 #### (Optional) Add any -local configs
@@ -190,17 +211,17 @@ For example, to configure for clouddriver, add these settings to
 #### (Optional) Enable monitoring
 
 The Spinnaker monitoring daemon runs as a sidecar in each Deployment (excluding
-Deck). To enable monitoring, copy the [monitoring](/monitoring) directory
-from this repository into the `base` directory of your fork of spinnaker-config.
+Deck). To enable monitoring, copy the [monitoring](/monitoring) directory from
+this repository into the `base` directory of your fork of spinnaker-config.
 
 Add the `monitoring` directory to your base kustomization.yml's `resource`
 block. This will pull in the kustomization.yml that includes configuration that
 each microservice's monitoring sidecar will use to discover the endpoint to poll
 for metrics.
 
-Next, copy the [example `patches` block](/monitoring/patches.yml) into your
-base kustomization.yml. These patches will add the monitoring sidecar and
-appropriate volumes to each Deployment.
+Next, copy the [example `patches` block](/monitoring/patches.yml) into your base
+kustomization.yml. These patches will add the monitoring sidecar and appropriate
+volumes to each Deployment.
 
 To include custom
 [metric filters](https://www.spinnaker.io/setup/monitoring/#configuring-metric-filters),
