@@ -22,10 +22,6 @@ spec:
           httpGet:
             port: traffic-port
             path: /health
-          failureThreshold: 3
-          periodSeconds: 10
-          successThreshold: 1
-          timeoutSeconds: 1
         volumeMounts:
         - mountPath: /opt/spinnaker/config
           name: igor-config-volume
