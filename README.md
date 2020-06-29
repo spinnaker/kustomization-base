@@ -208,6 +208,33 @@ images:
 # ...
 ```
 
+#### Replace Gate's readiness probe
+
+If you have not enabled SSL for Gate, override Gate's readiness probe with
+the following patch:
+
+```yaml
+readinessProbe:
+  $patch: replace
+  exec:
+    command:
+    - wget
+    - --no-check-certificate
+    - --spider
+    - -q
+    - http://localhost:8084/health
+```
+
+Reference the patch in your base `kustomization.yml` by adding the following to 
+a `patches` block:
+
+```yaml
+- target:
+    kind: Deployment
+    name: gate
+  path: path/to/my/readiness/probe/patch.yml
+```
+
 #### (Optional) Add any -local configs
 
 In addition to the main `service.yml` config file, each microservice also reads
