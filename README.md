@@ -196,8 +196,8 @@ version of each microservice in the `images` block in the `kustomization.yml`
 file.
 
 To deploy a specific version of Spinnaker, override each image's tag with
-`spinnaker-{version-number}`. For example, to deploy Spinnaker 1.20.5, override
-the tag for each microservice to be `spinnaker-1.20.5`:
+`spinnaker-{version-number}`. For example, to deploy Spinnaker 1.21.0, override
+the tag for each microservice to be `spinnaker-1.21.0`:
 
 ```yaml
 images:
@@ -207,6 +207,12 @@ images:
     newTag: spinnaker-1.20.5
 # ...
 ```
+
+This workflow has only been tested with Spinnaker >= 1.21.0. Deploying an
+earlier version of Spinnaker using this workflow may not work as expected,
+since you may have been relying on Halyard to supply configuration defaults that
+were only added as microservice-level defaults after the 1.20 release branches
+were cut.
 
 #### Replace Gate's readiness probe
 
