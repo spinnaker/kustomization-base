@@ -120,12 +120,12 @@ Note that the `kubeconfigFile` argument here points to a file relative to
 references be relative to where they will be mounted in the running container
 (rather than where they happen to be on the machine running kleat).
 
-Save this file as `halconfig.yml` to the current directory, Invoke `kleat` to
+Save this file as `halconfig.yml` to the current directory, Invoke `kleat generate` to
 consume the input `halconfig.yml` and output the service configs to the `kleat/`
 directory:
 
 ```shell script
-kleat halconfig.yml kleat/
+kleat generate halconfig.yml kleat/
 ```
 
 This will generate service configs in the `kleat/` directory, replacing the
