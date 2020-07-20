@@ -29,6 +29,8 @@ spec:
           name: deck-config-volume
         - mountPath: /var/secrets
           name: spinnaker-secrets-volume
+        securityContext:
+          allowPrivilegeEscalation: false
       volumes:
       - name: deck-config-volume
         secret:
@@ -36,3 +38,7 @@ spec:
       - name: spinnaker-secrets-volume
         secret:
           secretName: spinnaker-secrets
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        runAsNonRoot: true

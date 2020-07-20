@@ -31,6 +31,8 @@ spec:
           name: fiat-config-volume
         - mountPath: /var/secrets
           name: spinnaker-secrets-volume
+        securityContext:
+          allowPrivilegeEscalation: false
       terminationGracePeriodSeconds: 720
       volumes:
       - name: fiat-config-volume
@@ -39,3 +41,7 @@ spec:
       - name: spinnaker-secrets-volume
         secret:
           secretName: spinnaker-secrets
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        runAsNonRoot: true
