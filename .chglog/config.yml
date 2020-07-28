@@ -1,0 +1,13 @@
+style: github
+template: CHANGELOG.tpl.md
+info:
+  title: Changelog
+  repository_url: https://github.com/spinnaker/kustomization-base
+options:
+  header:
+    # Only include commits whose message comply with the convention: "<type>(<scope>): <subject>"
+    pattern: "^(\\w*)(?:\\(([\\w\\$\\.\\-\\*\\s]*)\\))?\\:\\s(.*)$"
+    pattern_maps:
+      - Type
+      - Scope
+      - Subject
