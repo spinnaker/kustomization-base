@@ -231,7 +231,7 @@ readinessProbe:
     - http://localhost:8084/health
 ```
 
-Reference the patch in your base `kustomization.yml` by adding the following to 
+Reference the patch in your base `kustomization.yml` by adding the following to
 a `patches` block:
 
 ```yaml
@@ -240,6 +240,19 @@ a `patches` block:
     name: gate
   path: path/to/my/readiness/probe/patch.yml
 ```
+
+#### (Optional) Use a specific version of kustomization
+
+With a reference of the version, you can use a specific version with conviction, after examining if the version works well with your configurations. Without a reference, a resource link always references `master`. You can check out the available versions [here](https://github.com/spinnaker/kustomization-base/releases).
+
+For example:
+
+```yaml
+resources:
+- github.com/spinnaker/kustomization-base/core?ref=v0.1.0
+```
+
+For further details, see [kustomization.yaml · The Kubectl Book](https://kubectl.docs.kubernetes.io/pages/examples/kustomize.html).
 
 #### (Optional) Add any -local configs
 
