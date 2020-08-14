@@ -42,7 +42,7 @@ spec:
         secret:
           secretName: spinnaker-secrets
       securityContext:
-        runAsUser: 1000
-        runAsGroup: 1000
+        runAsUser: 10111
+        runAsGroup: 10111
         runAsNonRoot: true
-        fsGroup: 1000
+        fsGroup: 10111
