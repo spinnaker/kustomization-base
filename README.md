@@ -142,8 +142,7 @@ For example, it has an entry for the clouddriver config as:
 
 #### Enable optional services
 
-The two optional Spinnaker services this workflow currently supports are Fiat
-and Kayenta.
+The optional Spinnaker services this workflow currently supports are Fiat, Kayenta and Keel.
 
 In the following kustomization files, we recommend including `?ref=${KUSTOMIZATION_BASE_REF}` to pin kustomization-base to a specific version.
 For further details, see [(Optional) Use a specific version of kustomization](#optional-use-a-specific-version-of-kustomization).
@@ -187,6 +186,28 @@ in your fork of spinnaker-config with the following block:
 ```
 services:
   fiat:
+    enabled: true
+```
+
+To enable Keel, ensure that `managedDelivery.enabled` is set to `true` in your hal
+config, and then ensure the Keel kustomization is included in the `resources`
+block of your `kustomization.yml`:
+
+```
+resources:
+- github.com/spinnaker/kustomization-base/core
+- github.com/spinnaker/kustomization-base/keel
+```
+
+
+Since the default
+[service discovery file](/core/service-discovery/spinnaker.yml) defaults
+Keel to disabled, you will need to configure a service discovery overrides file
+in your fork of spinnaker-config with the following block:
+
+```
+services:
+  keel:
     enabled: true
 ```
 
