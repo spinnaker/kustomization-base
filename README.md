@@ -157,17 +157,6 @@ resources:
 - github.com/spinnaker/kustomization-base/kayenta?ref=${KUSTOMIZATION_BASE_REF}
 ```
 
-Since the default
-[service discovery file](/core/service-discovery/spinnaker.yml) defaults
-Kayenta to disabled, you will need to configure a service discovery overrides
-file in your fork of spinnaker-config with the following block:
-
-```
-services:
-  kayenta:
-    enabled: true
-```
-
 To enable Fiat, ensure that `security.authz` is set to `true` in your hal
 config, and then ensure the Fiat kustomization is included in the `resources`
 block of your `kustomization.yml`:
@@ -197,18 +186,6 @@ block of your `kustomization.yml`:
 resources:
 - github.com/spinnaker/kustomization-base/core
 - github.com/spinnaker/kustomization-base/keel
-```
-
-
-Since the default
-[service discovery file](/core/service-discovery/spinnaker.yml) defaults
-Keel to disabled, you will need to configure a service discovery overrides file
-in your fork of spinnaker-config with the following block:
-
-```
-services:
-  keel:
-    enabled: true
 ```
 
 #### Set the Spinnaker version
