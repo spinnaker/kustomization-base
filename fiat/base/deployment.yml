@@ -12,7 +12,7 @@ spec:
           value: -XX:MaxRAMPercentage=80.0
         - name: SPRING_PROFILES_ACTIVE
           value: local
-        image: gcr.io/spinnaker-marketplace/fiat:spinnaker-master-latest-validated
+        image: us-docker.pkg.dev/spinnaker-community/docker/fiat:spinnaker-master-latest-validated
         name: fiat
         ports:
         - name: traffic-port

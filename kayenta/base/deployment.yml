@@ -12,7 +12,7 @@ spec:
           value: -XX:MaxRAMPercentage=80.0
         - name: SPRING_PROFILES_ACTIVE
           value: local
-        image: gcr.io/spinnaker-marketplace/kayenta:spinnaker-master-latest-validated
+        image: us-docker.pkg.dev/spinnaker-community/docker/kayenta:spinnaker-master-latest-validated
         name: kayenta
         ports:
         - name: traffic-port
