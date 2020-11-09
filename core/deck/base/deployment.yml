@@ -15,7 +15,7 @@ spec:
         envFrom:
           - configMapRef:
               name: deck-env
-        image: gcr.io/spinnaker-marketplace/deck:spinnaker-master-latest-validated
+        image: us-docker.pkg.dev/spinnaker-community/docker/deck:spinnaker-master-latest-validated
         name: deck
         ports:
         - name: traffic-port
