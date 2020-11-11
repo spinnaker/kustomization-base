@@ -252,7 +252,7 @@ resources:
 - github.com/spinnaker/kustomization-base/core?ref=v0.1.0
 ```
 
-For further details, see [kustomization.yaml · The Kubectl Book](https://kubectl.docs.kubernetes.io/pages/examples/kustomize.html).
+For further details, see the [documentation](https://kubectl.docs.kubernetes.io/references/kustomize/resource/) for the `resources` field.
 
 #### (Optional) Add any -local configs
 
