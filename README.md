@@ -202,9 +202,9 @@ the tag for each microservice to be `spinnaker-1.21.0`:
 ```yaml
 images:
   - name: us-docker.pkg.dev/spinnaker-community/docker/clouddriver
-    newTag: spinnaker-1.20.5
+    newTag: spinnaker-1.21.0
   - name: us-docker.pkg.dev/spinnaker-community/docker/deck
-    newTag: spinnaker-1.20.5
+    newTag: spinnaker-1.21.0
 # ...
 ```
 
