@@ -145,14 +145,17 @@ For example, it has an entry for the clouddriver config as:
 The two optional Spinnaker services this workflow currently supports are Fiat
 and Kayenta.
 
+In the following kustomization files, we recommend including `?ref=${KUSTOMIZATION_BASE_REF}` to pin kustomization-base to a specific version.
+For further details, see [(Optional) Use a specific version of kustomization](#optional-use-a-specific-version-of-kustomization).
+
 To enable Kayenta, ensure that `canary.enabled` is set to `true` in your hal
 config, and then ensure the Kayenta kustomization is included in the `resources`
 block of your `kustomization.yml`:
 
 ```
 resources:
-- github.com/spinnaker/kustomization-base/core
-- github.com/spinnaker/kustomization-base/kayenta
+- github.com/spinnaker/kustomization-base/core?ref=${KUSTOMIZATION_BASE_REF}
+- github.com/spinnaker/kustomization-base/kayenta?ref=${KUSTOMIZATION_BASE_REF}
 ```
 
 Since the default
@@ -172,8 +175,8 @@ block of your `kustomization.yml`:
 
 ```
 resources:
-- github.com/spinnaker/kustomization-base/core
-- github.com/spinnaker/kustomization-base/fiat
+- github.com/spinnaker/kustomization-base/core?ref=${KUSTOMIZATION_BASE_REF}
+- github.com/spinnaker/kustomization-base/fiat?ref=${KUSTOMIZATION_BASE_REF}
 ```
 
 Since the default
