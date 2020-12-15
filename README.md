@@ -24,7 +24,7 @@ Before you start, you will need:
 
 ### Instructions
 
-Fork the [spinnaker-config](https://github.com/ezimanyi/spinnaker-config)
+Fork the [spinnaker-config](https://github.com/spinnaker/spinnaker-config)
 repository, and clone this fork to your local machine. This repository contains
 a template kustomization that you will configure to deploy Spinnaker.
 
