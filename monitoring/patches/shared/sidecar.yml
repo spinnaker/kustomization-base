@@ -12,11 +12,12 @@ spec:
         image: us-docker.pkg.dev/spinnaker-community/docker/monitoring-daemon:spinnaker-master-latest-validated
         name: monitoring-daemon
         ports:
-        - containerPort: 8008
+        - name: http
+          containerPort: 8008
           protocol: TCP
         readinessProbe:
           tcpSocket:
-            port: 8008
+            port: http
         volumeMounts:
         - mountPath: /opt/spinnaker-monitoring/filters
           name: spinnaker-monitoring-filters-volume
