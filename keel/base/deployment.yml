@@ -11,7 +11,7 @@ spec:
       - env:
         - name: JAVA_OPTS
           value: -XX:MaxRAMPercentage=50.0
-        image: docker.io/nimak/spinnaker-keel:latest
+        image: us-docker.pkg.dev/spinnaker-community/docker/keel:0.1.0-20210331200022-slim
         name: keel
         ports:
         - containerPort: 7010
