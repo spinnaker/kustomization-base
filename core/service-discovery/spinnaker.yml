@@ -41,6 +41,9 @@ services:
   kayenta:
     baseUrl: http://kayenta.spinnaker:8090
     enabled: false
+  keel:
+    baseUrl: http://keel.spinnaker:7010
+    enabled: false
   orca:
     baseUrl: http://orca.spinnaker:8083
     enabled: true

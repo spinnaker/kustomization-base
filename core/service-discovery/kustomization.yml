@@ -30,6 +30,9 @@ secretGenerator:
 - files:
   - spinnaker.yml
   name: rosco-config
+- files:
+  - spinnaker.yml
+  name: keel-config
 - files: []
   name: spinnaker-secrets
 - files: []
