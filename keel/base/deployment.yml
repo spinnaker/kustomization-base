@@ -14,16 +14,13 @@ spec:
         image: us-docker.pkg.dev/spinnaker-community/docker/keel:0.1.0-20210331200022-slim
         name: keel
         ports:
-        - containerPort: 7010
+        - name: http
+          containerPort: 7010
           protocol: TCP
         readinessProbe:
-          exec:
-            command:
-            - wget
-            - --no-check-certificate
-            - --spider
-            - -q
-            - http://localhost:7010/health
+          httpGet:
+            path: /health
+            port: http
           failureThreshold: 3
           periodSeconds: 10
           successThreshold: 1
